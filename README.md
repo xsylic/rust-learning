@@ -322,7 +322,7 @@ Esses tipos ajudam a construir programas eficientes e seguros, especialmente em 
    cargo run
    ```
 
-4. As funções estão distribuídas por módulos como `scalar_types.rs`, `compound_types.rs`, e `collections.rs`, e podem ser chamadas no `main.rs`.
+4. As funções estão distribuídas por módulos como `btree.rs`, `channel.rs`, `collections.rs`, `compound_types.rs`, `mutex_rwlock.rs`, `rs_arc.rs` e `scalar_types.rs`, e podem ser chamadas no `main.rs`.
 
 ---
 
