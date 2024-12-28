@@ -237,6 +237,72 @@ queue.push_back(2);
 let first = queue.pop_front(); // Remove o primeiro item
 ```
 
+## Coleções e Tipos Avançados (Extras)
+
+Além das coleções básicas, Rust também oferece coleções e tipos mais avançados para casos de uso mais específicos. Aqui estão alguns exemplos:
+
+### 1. BTreeMap e BTreeSet
+
+- **BTreeMap**: Uma versão balanceada de `HashMap`, onde as chaves e os valores são armazenados em uma árvore binária balanceada, garantindo a ordem dos elementos.
+- **BTreeSet**: Similar ao `BTreeMap`, mas sem valores associados, apenas elementos ordenados.
+
+Exemplo de uso:
+```rust
+use std::collections::{BTreeMap, BTreeSet};
+let mut map = BTreeMap::new();
+map.insert(1, "um");
+map.insert(3, "três");
+map.insert(2, "dois");
+println!("{:?}", map);
+
+let mut set = BTreeSet::new();
+set.insert(1);
+set.insert(3);
+set.insert(2);
+println!("{:?}", set);
+```
+
+### 2. Rc e Arc
+
+- **Rc**: Um ponteiro inteligente para contagem de referência, útil para quando você precisa compartilhar um valor entre múltiplas partes do código, mas tudo dentro de um único thread.
+- **Arc**: Similar ao `Rc`, mas permite o uso de múltiplos threads, fazendo contagem de referência de maneira segura para threads.
+
+Exemplo de uso:
+```rust
+use std::rc::Rc;
+use std::sync::Arc;
+let rc = Rc::new(5);
+let arc = Arc::new(10);
+println!("{}", rc);
+println!("{}", arc);
+```
+
+### 3. Mutex e RwLock
+
+- **Mutex**: Usado para garantir o acesso exclusivo a um dado, bloqueando-o enquanto está em uso. Ideal para sincronizar o acesso a dados compartilhados entre múltiplas threads.
+- **RwLock**: Permite múltiplos leitores simultâneos ou um único escritor. É útil quando você tem mais leitura do que escrita.
+
+Exemplo de uso:
+```rust
+use std::sync::{Mutex, RwLock};
+let m = Mutex::new(0);
+let rw = RwLock::new(0);
+```
+
+### 4. Channels
+
+- **Channels**: Permitem a comunicação entre threads de maneira segura, onde uma thread envia dados para outra.
+
+Exemplo de uso:
+```rust
+use std::sync::mpsc;
+let (tx, rx) = mpsc::channel();
+tx.send("Mensagem").unwrap();
+println!("{}", rx.recv().unwrap());
+```
+
+Esses tipos ajudam a construir programas eficientes e seguros, especialmente em cenários de concorrência.
+
 ---
 
 ## Caso queira aprender também
